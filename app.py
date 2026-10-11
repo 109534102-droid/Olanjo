@@ -43,6 +43,19 @@ st.markdown(
         margin-bottom: 0.5rem !important;
     }
 
+    .back-to-site {
+        display: inline-block;
+        color: #197b68 !important;
+        font-size: 1.05rem;
+        font-weight: 700;
+        text-decoration: none !important;
+        margin-bottom: 1rem;
+    }
+
+    .back-to-site:hover {
+        text-decoration: underline !important;
+    }
+
     .subtitle {
         font-size: clamp(1.2rem, 4vw, 1.5rem);
         line-height: 1.7;
@@ -171,6 +184,12 @@ st.markdown(
     }
     </style>
     """,
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    "<a class='back-to-site' href='https://anxin-medicine-care.hsiaotc.chatgpt.site/'>"
+    "← 返回安心用藥首頁</a>",
     unsafe_allow_html=True,
 )
 
