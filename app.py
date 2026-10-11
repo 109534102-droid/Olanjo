@@ -112,6 +112,13 @@ st.markdown(
         line-height: 1.7;
     }
 
+    .ocr-text-box {
+        color: #183b36;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        font-family: inherit;
+    }
+
     .medication-card {
         background: #ffffff;
         border: 1px solid #d5e8e1;
@@ -292,11 +299,21 @@ else:
     if not raw_text and not recognition_result.get("failed", False):
         st.info("目前無法清楚辨識文字，請重新拍攝或上傳更清楚的照片。")
 
-    st.code(raw_text or "（沒有原始辨識文字）", language=None)
+    st.markdown(
+        "<div class='result-box ocr-text-box'>"
+        f"{html.escape(raw_text or '（沒有原始辨識文字）')}"
+        "</div>",
+        unsafe_allow_html=True,
+    )
 
     st.subheader("清理後文字")
     cleaned_text = clean_ocr_text(raw_text)
-    st.code(cleaned_text or "（沒有可顯示的清理後文字）", language=None)
+    st.markdown(
+        "<div class='result-box ocr-text-box'>"
+        f"{html.escape(cleaned_text or '（沒有可顯示的清理後文字）')}"
+        "</div>",
+        unsafe_allow_html=True,
+    )
 
     medication_info = extract_medication_info(cleaned_text)
     medication_name = html.escape(medication_info["藥品名稱"])
